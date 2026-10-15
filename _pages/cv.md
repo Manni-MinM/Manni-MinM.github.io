@@ -61,9 +61,9 @@ redirect_from:
 ## Skills
 
 <ul class="alf-skills">
-  <li><strong>Languages:</strong> Go, Python, TypeScript, Rust</li>
-  <li><strong>Infrastructure:</strong> Docker, Kubernetes, Google Cloud, Pulumi, GitHub Actions CI/CD, Linux</li>
-  <li><strong>Data:</strong> PostgreSQL, ClickHouse, InfluxDB, SQLite</li>
+  <li><strong>Languages:</strong> Go, Python, TypeScript, Rust, Java</li>
+  <li><strong>Infrastructure:</strong> Docker, Kubernetes, Google Cloud, AWS, Pulumi, GitHub Actions CI/CD, Linux</li>
+  <li><strong>Data:</strong> PostgreSQL, ClickHouse, InfluxDB, Redis, SQLite</li>
   <li><strong>AI and automation:</strong> LangChain, LangGraph, LLM agents, Model Context Protocol (MCP)</li>
 </ul>
 
