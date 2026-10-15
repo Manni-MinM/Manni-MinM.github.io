@@ -16,4 +16,19 @@
     await mermaid.run({querySelector:'code.language-mermaid'});
 </script>
 
+<!-- Links to other websites open in a new tab; links within this site stay in the same tab -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      if (!/^https?:$/.test(a.protocol)) return;
+      if (a.hostname !== location.hostname) {
+        a.target = '_blank';
+        a.rel = 'noopener';
+      } else {
+        a.removeAttribute('target');
+      }
+    });
+  });
+</script>
+
 <!-- end custom footer snippets -->

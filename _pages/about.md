@@ -17,7 +17,7 @@ redirect_from:
 
 {% include base_path %}
 
-**I believe networking research runs on data, and I build the infrastructure that enables it.** I lead [NetVibe](/projects/netvibe/){:target="_blank" rel="noopener"}, a continuous broadband measurement platform, and [Pramana](/projects/pramana/), a platform for building real-world network datasets by running actual applications, not simulations, under controlled and diverse network conditions.
+**I believe networking research runs on data, and I build the infrastructure that enables it.** I lead [NetVibe](/projects/netvibe/), a continuous broadband measurement platform, and [Pramana](/projects/pramana/), a platform for building real-world network datasets by running actual applications, not simulations, under controlled and diverse network conditions.
 
 **Biography:** I'm a Ph.D. student in the Systems and Networking Lab at UC Santa Barbara, advised by Prof. [Arpit Gupta](https://sites.cs.ucsb.edu/~arpitgupta/){:target="_blank" rel="noopener"}. Before that, I received my B.S. in Computer Engineering from Amirkabir University of Technology.
 
