@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="2 2 56 56" width="56" height="56">
+  <!-- NetVibe brand mark, recreated from the app's ui/src/components/netvibe/brand.tsx:
+       phosphor-lime square (DESIGN.md primary #C8FF2E, ~2px corners) with the pulse in on-primary #0B0B0A -->
+  <rect x="2" y="2" width="56" height="56" rx="4" fill="#C8FF2E"/>
+  <path d="M 3.3 30 L 10.5 30 L 13.5 38 L 13.5 22 L 21.5 38 L 21.5 22 L 25.5 30 L 31.5 30 L 35.5 22 L 40.5 38 L 45.5 22 L 49.5 30 L 56.7 30"
+        fill="none" stroke="#0B0B0A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

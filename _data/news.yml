@@ -1,0 +1,15 @@
+# Homepage news, newest first. `date` is free text, shown as written.
+- date: "Sep 2026"
+  text: "[Pramana](https://arxiv.org/abs/2607.26352) is accepted to **ACM HotNets 2026**!"
+
+- date: "Aug 2026"
+  text: "Our paper *Rethinking Network Foundation Models: From Bigger Models to Better Data* is accepted to the [NTC-R workshop](https://ntc-reloaded.github.io/) at **ACM CoNEXT 2026**!"
+
+- date: "Jul 2026"
+  text: "Our preprint [Pramana](https://arxiv.org/abs/2607.26352), a composable, domain-specific backend for empirical networking research, is on arXiv."
+
+- date: "Jul 2026"
+  text: "Our paper [KubeDSM](https://arxiv.org/abs/2501.07130), on scheduling and live migration for cloud-assisted edge clusters, is published in *Cluster Computing*."
+
+- date: "Fall 2025"
+  text: "Started my Ph.D. in Computer Science at UC Santa Barbara, advised by Prof. [Arpit Gupta](https://sites.cs.ucsb.edu/~arpitgupta/){:target=\"_blank\" rel=\"noopener\"}."

@@ -1,0 +1,67 @@
+---
+layout: archive
+title: "Projects"
+permalink: /projects/
+author_profile: false
+---
+
+{% include base_path %}
+
+<p class="alf-page-desc">Systems I've built or am building.</p>
+
+{% assign projects = site.projects | sort: "importance" %}
+{% assign featured = projects | where: "featured", true %}
+{% assign others = projects | where_exp: "p", "p.featured != true" %}
+
+{% for project in featured %}
+<div class="pj-feature">
+  {% if project.screenshot %}
+    <a class="pj-shot" href="{{ base_path }}{{ project.url }}"><img src="{{ project.screenshot | prepend: '/images/' | prepend: base_path }}" alt="{{ project.title }} screenshot"></a>
+  {% else %}
+    <a class="pj-shot pj-shot-placeholder" href="{{ base_path }}{{ project.url }}">
+      <div class="pj-chrome"><i></i><i></i><i></i></div>
+      <div class="pj-art pj-art-{{ project.art }}"><span>{{ project.title }}</span></div>
+    </a>
+  {% endif %}
+  <div class="pj-feature-body">
+    <div class="pj-meta">
+      {% if project.status %}<span class="pj-pill">{{ project.status }}</span>{% endif %}
+      {% if project.badge %}<span class="pj-badge">{{ project.badge }}</span>{% endif %}
+      {% if project.years %}<span class="pj-years">{{ project.years }}</span>{% endif %}
+    </div>
+    <h2 class="pj-feature-title">{% if project.mark %}<img class="pj-mark" src="{{ project.mark | prepend: '/images/' | prepend: base_path }}" alt="">{% endif %}<a href="{{ base_path }}{{ project.url }}">{{ project.title }}</a></h2>
+    <p>{{ project.summary | default: project.description }}</p>
+    <div class="pj-links">
+      {% for l in project.links %}<a class="alf-btn{% if l.primary %} alf-btn-primary{% endif %}" href="{{ l.url }}"{% if l.url contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ l.label }}</a>{% endfor %}
+      <a class="alf-btn" href="{{ base_path }}{{ project.url }}">Details</a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<div class="pj-grid">
+{% for project in others %}
+  <div class="pj-card{% if project.img %} pj-card-fig{% endif %}">
+    {% if project.img %}
+      <a class="pj-fig" href="{{ base_path }}{{ project.url }}"><img src="{{ project.img | prepend: '/images/' | prepend: base_path }}" alt="{{ project.title }} figure"></a>
+    {% elsif project.logo %}
+      <a href="{{ base_path }}{{ project.url }}"><img class="pj-thumb" src="{{ project.logo | prepend: '/images/' | prepend: base_path }}" alt="{{ project.title }}"></a>
+    {% else %}
+      <a class="pj-thumb pj-art pj-art-{{ project.art }}" href="{{ base_path }}{{ project.url }}"><span>{{ project.title | slice: 0, 2 }}</span></a>
+    {% endif %}
+    <div class="pj-card-body">
+      <div class="pj-card-head">
+        <h3 class="pj-card-title"><a href="{{ base_path }}{{ project.url }}">{{ project.title }}</a></h3>
+        {% if project.years %}<span class="pj-years">{{ project.years }}</span>{% endif %}
+      </div>
+      <p>{{ project.description }}</p>
+      <div class="pj-links">
+        {% if project.status %}<span class="pj-pill">{{ project.status }}</span>{% endif %}
+        {% if project.badge %}<span class="pj-badge">{{ project.badge }}</span>{% endif %}
+        {% for l in project.links %}<a class="alf-btn{% if l.primary %} alf-btn-primary{% endif %}" href="{{ l.url }}"{% if l.url contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ l.label }}</a>{% endfor %}
+        <a class="alf-btn" href="{{ base_path }}{{ project.url }}">Details</a>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>

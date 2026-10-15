@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+{% include base_path %}
+{% assign author = site.author %}
+
+<div id="main" role="main" class="alf-main">
+  <article class="alf-page" itemscope itemtype="http://schema.org/Person">
+    <header class="alf-header">
+      <h1 class="alf-title" itemprop="name">{{ author.name }}</h1>
+      {% if page.subtitle %}<p class="alf-desc">{{ page.subtitle | markdownify | remove: "<p>" | remove: "</p>" }}</p>{% endif %}
+    </header>
+
+    <div class="alf-profile">
+      {% if page.profile_image %}
+        <img src="{{ page.profile_image | prepend: '/images/' | prepend: base_path }}" alt="{{ author.name }}" itemprop="image">
+      {% endif %}
+      {% if page.profile_caption %}<div class="alf-address">{{ page.profile_caption | markdownify }}</div>{% endif %}
+    </div>
+
+    <div class="alf-content" itemprop="description">
+      {{ content }}
+    </div>
+
+    <div class="alf-contact">
+      <div class="alf-social">
+        {% if author.email %}<a class="js-email" data-user="{{ page.email_user }}" data-domain="{{ page.email_domain }}" title="Email"><i class="fas fa-envelope"></i></a>{% endif %}
+        {% if author.googlescholar %}<a href="{{ author.googlescholar }}" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>{% endif %}
+        {% if author.github %}<a href="https://github.com/{{ author.github }}" title="GitHub"><i class="fab fa-github"></i></a>{% endif %}
+        {% if author.linkedin %}<a href="https://www.linkedin.com/in/{{ author.linkedin }}" title="LinkedIn"><i class="fab fa-linkedin"></i></a>{% endif %}
+      </div>
+      {% if page.contact_note %}<div class="alf-contact-note">{{ page.contact_note }}</div>{% endif %}
+    </div>
+  </article>
+</div>
+
+<script>
+  // Assemble the mailto link client-side so the plain address isn't in the HTML
+  document.querySelectorAll('a.js-email').forEach(function (a) {
+    a.href = 'mailto:' + a.dataset.user + '@' + a.dataset.domain;
+  });
+</script>

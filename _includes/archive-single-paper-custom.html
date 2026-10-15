@@ -1,0 +1,18 @@
+{% include base_path %}
+{% comment %} al-folio-style publication entry: venue badge, title, authors (self underlined), venue, links {% endcomment %}
+{% assign me = site.author.name %}
+{% capture me_html %}<span class="alf-me">{{ me }}</span>{% endcapture %}
+<li class="alf-pub">
+  <div class="alf-pub-badge">{% if post.venue_short %}<abbr title="{{ post.venue }}">{{ post.venue_short }}</abbr>{% endif %}</div>
+  <div class="alf-pub-body">
+    <div class="alf-pub-title"><a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a></div>
+    {% if post.authors %}<div class="alf-pub-authors">{{ post.authors | replace: me, me_html }}</div>{% endif %}
+    <div class="alf-pub-venue"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</div>
+    <div class="alf-pub-links">
+      {% if post.paperurl %}<a class="alf-btn" href="{{ post.paperurl }}">PDF</a>{% endif %}
+      {% if post.codeurl %}<a class="alf-btn" href="{{ post.codeurl }}">Code</a>{% endif %}
+      {% if post.slidesurl %}<a class="alf-btn" href="{{ post.slidesurl }}">Slides</a>{% endif %}
+      {% if post.bibtexurl %}<a class="alf-btn" href="{{ post.bibtexurl }}">BibTeX</a>{% endif %}
+    </div>
+  </div>
+</li>

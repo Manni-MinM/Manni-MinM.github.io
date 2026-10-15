@@ -1,0 +1,688 @@
+/* ==========================================================================
+   al-folio look (modeled on https://hongzhangblaze.github.io)
+   Imported last, so these rules override the AcademicPages defaults.
+   ========================================================================== */
+
+:root {
+  --alf-theme                        : #2698ba;
+  --alf-theme-hover                  : #1d7894;
+  --alf-card-bg                      : #ffffff;
+  --alf-max-width                    : 800px;
+
+  --global-bg-color                  : #ffffff;
+  --global-footer-bg-color           : #ffffff;
+  --global-text-color                : #1a1a1a;
+  --global-text-color-light          : #6c757d;
+  --global-link-color                : var(--alf-theme);
+  --global-link-color-hover          : var(--alf-theme-hover);
+  --global-link-color-visited        : var(--alf-theme);
+  --global-masthead-link-color       : #1a1a1a;
+  --global-masthead-link-color-hover : var(--alf-theme);
+  --global-border-color              : #e8e8e8;
+}
+
+html[data-theme="dark"] {
+  --alf-theme-hover                  : #4fb3d2;
+  --alf-card-bg                      : #232325;
+
+  --global-base-color                : #1c1c1d;
+  --global-bg-color                  : #1c1c1d;
+  --global-footer-bg-color           : #1c1c1d;
+  --global-text-color                : #e8e8e8;
+  --global-text-color-light          : #a0a4a8;
+  --global-link-color                : var(--alf-theme);
+  --global-link-color-hover          : var(--alf-theme-hover);
+  --global-link-color-visited        : var(--alf-theme);
+  --global-masthead-link-color       : #e8e8e8;
+  --global-masthead-link-color-hover : var(--alf-theme);
+  --global-border-color              : #333336;
+  --global-dark-border-color         : #444448;
+  --global-thead-color               : #2a2a2c;
+}
+
+/* AcademicPages animates every color change (`transition: all`), so switching to
+   dark mode on load fades text in from the light colors. Turn that off. */
+b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a, tr, td,
+form button, input[type="submit"], .btn, .highlight, .archive__item-teaser {
+  transition: none;
+}
+
+/* Typography
+   ========================================================================== */
+
+html, body, h1, h2, h3, h4, h5, h6, input, button, .masthead, .page__footer {
+  font-family: "Roboto", -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  font-weight: 300;
+  background-color: var(--global-bg-color);
+  color: var(--global-text-color);
+}
+
+strong, b { font-weight: 500; }
+
+a {
+  color: var(--global-link-color);
+  text-decoration: none;
+
+  &:hover { color: var(--global-link-color-hover); text-decoration: none; }
+  &:visited { color: var(--global-link-color-visited); }
+}
+
+/* Navigation
+   ========================================================================== */
+
+.masthead {
+  border-bottom: 1px solid var(--global-border-color);
+  font-size: 1.05rem;
+}
+
+.masthead__inner-wrap {
+  max-width: var(--alf-max-width);
+  padding: 0.55em 1em;
+}
+
+.masthead__menu-item {
+  background-color: var(--global-bg-color);
+
+  a { font-weight: 400; }
+
+  &--lg a { font-weight: 500; }
+
+  &.active a { color: var(--alf-theme); }
+}
+
+/* Page links on the right; the name (hidden on the homepage) is pinned left.
+   The link list stays shrink-to-fit so the greedy-nav overflow script measures it correctly. */
+#site-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 2.6rem;
+}
+
+.greedy-nav .visible-links {
+  display: flex;
+  align-items: center;
+
+  li { display: block; }
+
+  a:before { display: none; }
+
+  .masthead__menu-item--lg {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-right: 0;
+
+    a { margin-left: 0; }
+  }
+}
+
+.greedy-nav a { margin: 0 0.75rem; }
+
+/* Layout: single centered column, no sidebar
+   ========================================================================== */
+
+#main {
+  max-width: var(--alf-max-width) !important;
+  margin-top: 2.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.sidebar { display: none !important; }
+
+.page,
+.archive {
+  float: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.page__title,
+.archive > h1.page__title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin: 0.2em 0 0.2em;
+}
+
+.alf-page-desc {
+  color: var(--global-text-color-light);
+  margin: 0 0 2em;
+}
+
+/* Homepage
+   ========================================================================== */
+
+.alf-header { margin-bottom: 1em; }
+
+.alf-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.2em;
+}
+
+.alf-desc {
+  font-size: 1rem;
+  margin: 0;
+
+  a { color: var(--global-text-color); }
+  a:hover { color: var(--alf-theme); }
+}
+
+.alf-profile {
+  float: right;
+  width: 30%;
+  margin: 0.3em 0 1em 1.5em;
+
+  img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.alf-address {
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.8rem;
+  margin-top: 0.5em;
+
+  p { margin: 0; }
+}
+
+.alf-content {
+  font-size: 1rem;
+  line-height: 1.65;
+
+  p { margin: 0 0 1em; }
+
+  ul { margin-top: 0.2em; }
+
+  li { margin-bottom: 0.25em; }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin: 1.4em 0 0.6em;
+    padding: 0;
+    border: none;
+  }
+}
+
+/* News */
+.alf-content table.alf-news {
+  display: table;
+  width: 100%;
+  border: none;
+  font-size: 1rem;
+  margin-bottom: 1em;
+
+  tr, th, td { border: none; background: none; }
+
+  th {
+    width: 7em;
+    padding: 0.45em 1em 0.45em 0;
+    text-align: left;
+    vertical-align: top;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  td { padding: 0.45em 0; font-weight: 400; }
+}
+
+/* Contact row */
+.alf-contact {
+  clear: both;
+  text-align: center;
+  margin: 3em 0 1.5em;
+}
+
+.alf-social a {
+  font-size: 2rem;
+  margin: 0 0.35em;
+  color: var(--global-text-color);
+  cursor: pointer;
+
+  &:hover { color: var(--alf-theme); }
+}
+
+.alf-contact-note {
+  margin-top: 0.4em;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .alf-profile {
+    float: none;
+    width: 60%;
+    margin: 0 auto 1.5em;
+  }
+}
+
+/* Publications
+   ========================================================================== */
+
+.alf-section {
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 1.2em 0 0.6em;
+  border: none;
+}
+
+ol.alf-pubs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.alf-pub {
+  display: flex;
+  gap: 1.2em;
+  margin-bottom: 2em;
+  line-height: 1.5;
+}
+
+.alf-pub-badge {
+  flex: 0 0 7.5em;
+
+  abbr {
+    display: block;
+    background: var(--alf-theme);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 0.15em 0.4em;
+    border-radius: 2px;
+    border: none;
+    text-decoration: none;
+    cursor: help;
+  }
+}
+
+.alf-pub-title {
+  font-weight: 500;
+
+  a { color: var(--global-text-color); }
+  a:hover { color: var(--alf-theme); }
+}
+
+.alf-me {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.alf-btn {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  margin: 0.45em 0.4em 0 0;
+  padding: 0.1em 1em;
+  border: 1px solid var(--global-text-color);
+  border-radius: 2px;
+
+  &, &:visited { color: var(--global-text-color); }
+  &:hover { color: var(--alf-theme); border-color: var(--alf-theme); }
+}
+
+@media (max-width: 600px) {
+  .alf-pub { flex-direction: column; gap: 0.3em; }
+  .alf-pub-badge { flex-basis: auto; width: 7.5em; }
+}
+
+/* Projects: one featured project (screenshot + text), the rest as compact cards
+   ========================================================================== */
+
+.pj-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 0.05em 0.6em;
+  border: 1px solid #3fb27f;
+  border-radius: 10px;
+  color: #3fb27f;
+}
+
+.pj-badge {
+  display: inline-block;
+  background: var(--alf-theme);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.12em 0.5em;
+  border-radius: 2px;
+}
+
+.pj-years {
+  color: var(--global-text-color-light);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.pj-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4em;
+
+  .alf-btn { margin: 0; }
+}
+
+/* Placeholder art until a real logo, figure, or screenshot exists */
+.pj-art {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-weight: 700;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+    background-image:
+      radial-gradient(circle at 20% 30%, #fff 1.5px, transparent 2px),
+      radial-gradient(circle at 70% 60%, #fff 1.5px, transparent 2px),
+      radial-gradient(circle at 45% 80%, #fff 1.5px, transparent 2px);
+    background-size: 60px 60px, 80px 80px, 50px 50px;
+  }
+
+  span { position: relative; }
+}
+
+.pj-art-nv { background: linear-gradient(135deg, #2698ba, #155d73); }
+.pj-art-pr { background: linear-gradient(135deg, #6f5bd3, #3b2f86); }
+.pj-art-kd { background: linear-gradient(135deg, #3a8f6b, #1d5a40); }
+
+.pj-feature {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 1.4em;
+  padding: 1.2em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+  background: var(--alf-card-bg);
+
+  p { line-height: 1.55; margin: 0 0 0.9em; }
+}
+
+.pj-shot {
+  display: block;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  align-self: center;
+
+  img { display: block; width: 100%; }
+}
+
+.pj-shot-placeholder {
+  .pj-chrome {
+    height: 22px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 0 8px;
+    border-bottom: 1px solid var(--global-border-color);
+
+    i { display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--global-border-color); }
+  }
+
+  .pj-art { height: 190px; font-size: 1.8rem; }
+}
+
+.pj-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.pj-feature-title {
+  margin: 0.25em 0 0.3em;
+  font-size: 1.6rem;
+  font-weight: 500;
+  border: none;
+
+  a, a:visited { color: var(--global-text-color); }
+  a:hover { color: var(--alf-theme); }
+}
+
+.pj-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2em;
+  margin-top: 1.2em;
+}
+
+.pj-card {
+  display: flex;
+  gap: 1em;
+  padding: 1em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 8px;
+  background: var(--alf-card-bg);
+
+  p { margin: 0.2em 0 0.6em; font-size: 0.9rem; line-height: 1.45; }
+}
+
+.pj-thumb {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  border-radius: 6px;
+  object-fit: cover;
+  font-size: 1.2rem;
+}
+
+.pj-card-body { flex: 1; min-width: 0; }
+
+.pj-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.6em;
+}
+
+.pj-card-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 500;
+  border: none;
+
+  a, a:visited { color: var(--global-text-color); }
+  a:hover { color: var(--alf-theme); }
+}
+
+@media (max-width: 700px) {
+  .pj-feature, .pj-grid { grid-template-columns: 1fr; }
+}
+
+/* Footer
+   ========================================================================== */
+
+.page__footer {
+  background-color: var(--global-footer-bg-color);
+  border-top: 1px solid var(--global-border-color);
+  margin-top: 3em;
+
+  footer {
+    max-width: var(--alf-max-width);
+    margin: 0 auto;
+    padding: 0.8em 1em;
+  }
+}
+
+.page__footer-follow { display: none; }
+
+.page__footer-copyright {
+  font-size: 0.75rem;
+  color: var(--global-text-color-light);
+}
+
+/* al-folio links aren't underlined */
+.archive a,
+.page__content a {
+  text-decoration: none;
+
+  &:hover { text-decoration: none; }
+}
+
+/* Education: degree on the left, dates right-aligned */
+ul.alf-edu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1em;
+    margin-bottom: 0.8em;
+  }
+}
+
+.alf-edu-date {
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: var(--global-text-color-light);
+}
+
+@media (max-width: 600px) {
+  ul.alf-edu li { flex-direction: column; gap: 0; }
+}
+
+/* Keep publication spacing inside .alf-content, which tightens list items */
+.alf-content li.alf-pub { margin-bottom: 2em; }
+
+ul.alf-skills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li { margin-bottom: 0.4em; }
+}
+
+/* Compact card with a paper figure: figure banner on top, text below */
+.pj-card-fig {
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+
+  .pj-card-body { padding: 0 1em 1em; }
+}
+
+.pj-fig {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 170px;
+  padding: 0.6em;
+  background: #fff;
+  border-bottom: 1px solid var(--global-border-color);
+
+  img { max-width: 100%; max-height: 100%; object-fit: contain; }
+}
+
+/* Figure captions on project pages: small, muted, tucked under the image */
+.page__content p.pj-caption {
+  line-height: 1.4;
+  color: var(--global-text-color-light);
+}
+.page__content p.pj-caption em {
+  display: block;
+  margin-top: 0.9em;
+  font-size: 0.7rem;
+}
+
+/* Team: two columns, initials avatar beside name, position, and an optional chip */
+.pj-team {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.3em 2em;
+  margin-top: 0.6em;
+}
+
+.pj-person {
+  display: flex;
+  gap: 0.9em;
+  align-items: center;
+  line-height: 1.35;
+}
+
+.pj-av {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.pj-av1 { background: linear-gradient(135deg, #2698ba, #155d73); }
+.pj-av2 { background: linear-gradient(135deg, #6f5bd3, #3b2f86); }
+.pj-av3 { background: linear-gradient(135deg, #3a8f6b, #1d5a40); }
+.pj-av4 { background: linear-gradient(135deg, #d0803a, #8a4d1a); }
+.pj-av5 { background: linear-gradient(135deg, #c2507a, #7a2747); }
+
+.pj-name { font-weight: 500; }
+
+.pj-role {
+  font-size: 0.82rem;
+  color: var(--global-text-color-light);
+}
+
+.pj-chip {
+  display: inline-block;
+  margin-top: 0.3em;
+  padding: 0.1em 0.6em;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  background: var(--global-border-color);
+  color: var(--global-text-color-light);
+
+  b { font-weight: 500; color: var(--global-text-color); }
+}
+
+@media (max-width: 600px) {
+  .pj-team { grid-template-columns: 1fr; }
+}
+
+/* Primary call-to-action button (filled accent) */
+.alf-btn.alf-btn-primary {
+  background: var(--alf-theme);
+  border-color: var(--alf-theme);
+  font-weight: 500;
+
+  &, &:visited { color: #fff; }
+  &:hover { background: var(--alf-theme-hover); border-color: var(--alf-theme-hover); color: #fff; }
+}
+
+.page__content a.alf-btn-primary {
+  font-size: 0.85rem;
+  padding: 0.35em 1.1em;
+}
+
+/* Project brand mark next to the project name */
+img.pj-mark {
+  display: inline-block;
+  width: 1.05em;
+  height: 1.05em;
+  margin-right: 0.35em;
+  vertical-align: -0.14em;
+  border-radius: 3px;
+}

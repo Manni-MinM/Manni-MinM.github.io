@@ -23,7 +23,7 @@ repository               : "Manni-MinM/Manni-MinM.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile.jpg"
   name             : "Manni Moghimi"
   pronouns         : # example: "she/her"  
   bio              : "Computer Science PhD Student at UC Santa Barbara"
@@ -35,7 +35,7 @@ author:
   # Academic websites
   academia         : # URL
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?hl=en&user=UXRbswYAAAAJ&view_op"
+  googlescholar    : "https://scholar.google.com/citations?hl=en&user=M8knvp0AAAAJ&view_op"
   inspire-hep      : # URL
   impactstory      : # URL
   orcid            : # URL
@@ -63,7 +63,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         : "manni-moghimi-275267245"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
@@ -87,6 +87,10 @@ publication_category:
     title: 'Journal Articles'    
   conferences:
     title: 'Conference Papers'
+  workshops:
+    title: 'Workshop Papers'
+  preprints:
+    title: 'Preprints'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/ for social media previews
@@ -224,10 +228,10 @@ collections:
   publications:
     output: true
     permalink: /:collection/:path/
-  portfolio:
+  talks:
     output: true
     permalink: /:collection/:path/
-  talks:
+  projects:
     output: true
     permalink: /:collection/:path/
 
@@ -240,7 +244,7 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       read_time: true
       comments: true
       share: true
@@ -251,14 +255,14 @@ defaults:
       type: pages
     values:
       layout: single
-      author_profile: true
+      author_profile: false
   # _teaching
   - scope:
       path: ""
       type: teaching
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       share: true
       comments: true
   # _publications
@@ -267,25 +271,23 @@ defaults:
       type: publications
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       share: true
       comments: true
-  # _portfolio
+  # _projects
   - scope:
       path: ""
-      type: portfolio
+      type: projects
     values:
       layout: single
-      author_profile: true
-      share: true
-      comment: true
+      author_profile: false
   # _talks
   - scope:
       path: ""
       type: talks
     values:
       layout: talk
-      author_profile: true
+      author_profile: false
       share: true
 
 
